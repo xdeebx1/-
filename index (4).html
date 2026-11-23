@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>سينماتيك — أرشيف العصر الذهبي المصري</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+/* ===== Tokens ===== */
+:root{
+  --paper:#ece3d0; --paper-2:#e2d7bf; --ink:#14110f; --ink-2:#4a423a;
+  --oxblood:#8f2418; --brass:#b08a3e; --night:#1b1613;
+  --f-display:'Aref Ruqaa','Amiri',serif;
+  --f-body:'IBM Plex Sans Arabic',system-ui,sans-serif;
+  --f-latin:'Cormorant Garamond',Georgia,serif;
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2.5rem; --s5:4.5rem;
+  --max:76rem; --line:1px solid color-mix(in srgb,var(--ink) 28%,transparent);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:300 1.0625rem/1.9 var(--f-body);
+  background-image:radial-gradient(color-mix(in srgb,var(--ink) 7%,transparent) 1px,transparent 1px);background-size:5px 5px}
+a{color:inherit;text-decoration-color:var(--oxblood);text-underline-offset:.3em}
+a:hover,a:focus-visible{color:var(--oxblood)}
+:focus-visible{outline:2px solid var(--oxblood);outline-offset:3px}
+[tabindex="-1"]:focus{outline:0}
+[hidden]{display:none!important}
+.skip{position:absolute;inset-inline-start:-99rem}.skip:focus{inset-inline-start:1rem;top:1rem;background:var(--ink);color:var(--paper);padding:.5rem 1rem;z-index:9}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.latin,i{font-family:var(--f-latin);font-style:italic;font-weight:500;letter-spacing:.02em}
+.kicker{font-size:.8rem;font-weight:600;letter-spacing:.08em;color:var(--oxblood);margin-bottom:var(--s2)}
+h1{font:700 clamp(2.4rem,6.5vw,5.5rem)/1.2 var(--f-display)}
+h1 em{color:var(--oxblood);font-style:normal}
+
+/* ===== Bar ===== */
+.bar{display:flex;justify-content:space-between;align-items:center;gap:var(--s2);flex-wrap:wrap;
+  padding:var(--s2) clamp(1rem,4vw,3rem);border-bottom:var(--line);position:sticky;top:0;background:var(--paper);z-index:5}
+.mark{text-decoration:none;display:flex;flex-direction:column;line-height:1.2}
+.mark b{font:700 1.5rem var(--f-display)}.mark i{font-size:.8rem;color:var(--brass)}
+nav{display:flex;gap:clamp(.8rem,2.5vw,2rem);font-size:.95rem;font-weight:400}
+nav a{text-decoration:none;padding:.3rem 0;border-bottom:2px solid transparent}
+nav a[aria-current]{border-color:var(--oxblood)}
+
+main{max-width:var(--max);margin-inline:auto;padding:var(--s4) clamp(1rem,4vw,3rem) var(--s5)}
+.btn{display:inline-block;margin-top:var(--s3);padding:.8rem 2rem;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;border:2px solid var(--ink);transition:.2s}
+.btn:hover,.btn:focus-visible{background:transparent;color:var(--ink)}
+
+/* ===== Placeholder photo ===== */
+.ph{position:relative;display:grid;place-items:center;text-align:center;margin:0;color:var(--paper);
+  font-size:.85rem;line-height:1.7;background:
+  repeating-linear-gradient(45deg,transparent 0 9px,#ffffff10 9px 10px),linear-gradient(160deg,#3a2f27,#14110f);
+  border:8px solid var(--paper-2);outline:1px solid var(--ink)}
+.ph.photo{display:block;padding:0}.ph.photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.85) sepia(.25)}
+.ph figcaption{position:absolute;inset:auto 0 0 0;padding:.5rem;background:#000a;font-size:.75rem}
+
+/* ===== Home: asymmetric editorial ===== */
+.home-grid{display:grid;grid-template-columns:5rem 1.6fr 1fr;gap:var(--s4);align-items:start}
+.years{writing-mode:vertical-rl;display:flex;align-items:center;gap:var(--s2);font:700 2.2rem var(--f-display);color:var(--oxblood);min-height:22rem}
+.years .dash{flex:1;width:1px;background:var(--oxblood)}
+.lede{max-width:34rem;margin-top:var(--s3);color:var(--ink-2)}
+.ph.tall{aspect-ratio:3/4;margin-top:var(--s5);transform:rotate(-1.5deg)}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:var(--s5);border-block:var(--line);
+  background:repeating-linear-gradient(90deg,var(--ink) 0 10px,transparent 10px 24px) top/100% 5px no-repeat,
+  repeating-linear-gradient(90deg,var(--ink) 0 10px,transparent 10px 24px) bottom/100% 5px no-repeat}
+.strip a{display:flex;flex-direction:column;padding:var(--s3) var(--s2);text-decoration:none;border-inline-start:var(--line)}
+.strip a:first-child{border:0}
+.strip small{color:var(--brass);font-weight:600}.strip b{font:700 1.4rem var(--f-display)}
+.strip a:hover{background:var(--paper-2)}
+
+/* ===== Index (catalog list) ===== */
+.head{margin-bottom:var(--s4)}
+.filters{display:flex;gap:var(--s1);margin-top:var(--s3);flex-wrap:wrap}
+.filters button{font:inherit;font-size:.9rem;padding:.4rem 1.1rem;background:none;border:1px solid var(--ink);cursor:pointer}
+.filters button.on,.filters button:hover{background:var(--ink);color:var(--paper)}
+.index{list-style:none;padding:0;border-top:var(--line)}
+.index a,.index .rowin{display:grid;grid-template-columns:4rem 1fr auto auto;gap:var(--s2);align-items:baseline;padding:var(--s2) 0;border-bottom:var(--line);text-decoration:none;transition:padding .25s,background .25s}
+.index .no{color:var(--brass);font-weight:600}
+.index b{font:700 1.7rem var(--f-display)}.index i{color:var(--ink-2)}
+.index .yr{font-size:.85rem;color:var(--ink-2);min-width:9rem;text-align:end}
+.index li.soon{opacity:.55}
+.index a:hover{padding-inline-start:var(--s2);background:var(--paper-2)}
+.note{margin-top:var(--s3);font-size:.9rem;color:var(--ink-2)}
+
+/* ===== Artist profile ===== */
+.profile{display:grid;grid-template-columns:1fr 1.2fr;gap:var(--s5);align-items:start}
+.ph.portrait{aspect-ratio:4/5;position:sticky;top:6rem}
+.profile h1{font-size:clamp(3rem,9vw,7rem);line-height:1.05}
+.latin{font-size:1.6rem;color:var(--ink-2);margin-bottom:var(--s3)}
+.pull{font:400 1.7rem/1.7 var(--f-display);border-inline-start:4px solid var(--oxblood);padding-inline-start:var(--s3);margin-block:var(--s3)}
+.facts{display:flex;flex-wrap:wrap;gap:var(--s3);margin-block:var(--s3);padding-block:var(--s2);border-block:var(--line)}
+dt{font-size:.75rem;color:var(--oxblood);font-weight:600}dd{margin:0;font-weight:400}
+.related{margin-top:var(--s3);font-size:.95rem}
+
+/* ===== Song ===== */
+.song{display:grid;grid-template-columns:minmax(14rem,.8fr) 1.2fr;gap:var(--s5);align-items:center}
+.vinyl{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--oxblood) 0 16%,var(--ink) 17% 19%,transparent 20%),
+  repeating-radial-gradient(circle,#1e1915 0 3px,#0c0a09 3px 6px);box-shadow:var(--s2) var(--s2) 0 var(--paper-2);animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.song h1{font-size:clamp(3rem,8vw,6rem)}
+
+/* ===== Timeline ===== */
+.tl{list-style:none;padding:0;position:relative;max-width:46rem}
+.tl::before{content:"";position:absolute;inset-block:0;inset-inline-start:6.5rem;width:1px;background:var(--oxblood)}
+.tl li{display:grid;grid-template-columns:6rem 1fr;gap:var(--s4);padding-block:var(--s3);position:relative}
+.tl li::after{content:"";position:absolute;inset-inline-start:6.5rem;top:2.1rem;width:.8rem;height:.8rem;background:var(--paper);border:2px solid var(--oxblood);transform:translateX(50%)}
+[dir=rtl] .tl li::after{transform:translateX(50%)}
+.tl time{font:700 2rem var(--f-display);color:var(--oxblood)}
+
+
+/* ===== Home additions ===== */
+.counts{margin-top:var(--s3);font-weight:600;color:var(--oxblood)}
+.decades{margin-block:var(--s5) var(--s3)}.decades h2{font:700 2.4rem var(--f-display)}
+#dec{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));border-top:var(--line);margin-top:var(--s2)}
+.dec{padding:var(--s3) var(--s2);border-inline-start:var(--line)}.dec:first-child{border:0}
+.dec h3{font:700 1.5rem var(--f-display);color:var(--oxblood)}.dec ul{list-style:none;padding:0}
+.dec li{padding:.2rem 0;font-size:.95rem}.dec small{color:var(--brass);font-weight:600;margin-inline-end:.5rem}
+
+/* ===== Search ===== */
+#q{width:100%;font:400 1.6rem var(--f-display);padding:var(--s2) 0;background:none;border:0;border-bottom:2px solid var(--ink);color:inherit}
+#q:focus{outline:0;border-color:var(--oxblood)}
+.res{list-style:none;padding:0;margin-top:var(--s3)}
+.res a{display:flex;gap:var(--s2);align-items:baseline;padding:var(--s1) 0;border-bottom:var(--line);text-decoration:none}
+.res b{font:700 1.4rem var(--f-display)}
+
+.foot{border-top:var(--line);padding:var(--s3) clamp(1rem,4vw,3rem);font-size:.85rem;color:var(--ink-2);text-align:center}
+
+/* ===== Navigation & chrome ===== */
+.menu{display:none;font:inherit;background:none;border:1px solid var(--ink);padding:.3rem .9rem;cursor:pointer;color:inherit}
+.crumb{font-size:.85rem;color:var(--ink-2);margin-bottom:var(--s3)}
+.crumb a{text-decoration:none}.crumb span{margin-inline:.5rem;color:var(--brass)}
+.pn{display:flex;justify-content:space-between;gap:var(--s2);margin-top:var(--s4);padding-top:var(--s2);border-top:var(--line);font-size:.95rem}
+.pn a{text-decoration:none}
+.sec{margin-top:var(--s4)}.sec h2,.about h2{font:700 1.6rem var(--f-display);margin:var(--s3) 0 var(--s1)}
+.sec h2{margin-top:0}
+.tw{overflow-x:auto}
+.works{width:100%;border-collapse:collapse;font-size:.95rem}
+.works th{text-align:start;font-size:.75rem;color:var(--oxblood);font-weight:600}
+.works th,.works td{padding:.55rem .8rem .55rem 0;border-bottom:var(--line);text-align:start}
+.about p{max-width:40rem}
+.sort{margin-top:var(--s2);font:inherit;font-size:.9rem;padding:.35rem .6rem;background:var(--paper);border:1px solid var(--ink);color:inherit}
+.top{position:fixed;inset-block-end:1rem;inset-inline-start:1rem;width:2.8rem;height:2.8rem;border:1px solid var(--ink);background:var(--paper);cursor:pointer;font-size:1.1rem;display:none;z-index:6;color:inherit}
+.top:hover{background:var(--ink);color:var(--paper)}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:var(--s4);text-align:start;max-width:var(--max);margin:0 auto var(--s3)}
+.foot h2{font:700 1.1rem var(--f-display);color:var(--oxblood);margin-bottom:.4rem}
+.foot a{display:block;font-size:.9rem;padding:.15rem 0}
+
+/* ===== Responsive ===== */
+@media (max-width:62rem){
+  .home-grid{grid-template-columns:1fr;gap:var(--s3)}
+  .years{writing-mode:horizontal-tb;min-height:0;font-size:1.6rem}.years .dash{height:1px;width:auto}
+  .ph.tall{margin-top:0;max-width:22rem;aspect-ratio:4/3}
+  .profile,.song{grid-template-columns:1fr;gap:var(--s3)}
+  .ph.portrait{position:static;max-width:24rem}
+  .vinyl{max-width:16rem}
+}
+@media (max-width:40rem){
+  body{font-size:1rem}
+  nav{width:100%;justify-content:space-between;font-size:.85rem}
+  .strip{grid-template-columns:1fr 1fr}.strip a:nth-child(3){border:0}
+  .index a,.index .rowin{grid-template-columns:2.5rem 1fr;row-gap:0}.index i,.index .yr{grid-column:2;text-align:start;min-width:0}
+  .tl::before,.tl li::after{inset-inline-start:4rem}.tl li{grid-template-columns:3.5rem 1fr;gap:var(--s3)}.tl time{font-size:1.4rem}
+}
+@media (max-width:40rem){
+  .top.show{display:block}
+  .menu{display:inline-block}
+  nav{display:none;flex-direction:column;gap:.2rem}nav.open{display:flex}
+  .foot-grid{grid-template-columns:1fr;gap:var(--s2)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<header class="bar">
+  <a class="mark" href="#/" aria-label="الرئيسية"><b>سينماتيك</b><i>Egyptian Golden Age</i></a>
+  <button class="menu" aria-expanded="false" aria-controls="nav">القائمة</button>
+  <nav id="nav" aria-label="التصفح الرئيسي">
+    <a href="#/artists">الوجوه</a>
+    <a href="#/works">الأعمال</a>
+    <a href="#/timeline">العصور</a>
+    <a href="#/search">بحث</a>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- الرئيسية -->
+<section class="view" data-view="home">
+  <div class="home-grid">
+    <div class="years" aria-hidden="true"><span>١٩٢٧</span><span class="dash"></span><span>١٩٧٧</span></div>
+    <div class="home-lead">
+      <p class="kicker">أرشيف ثقافي · نصف قرن من الفن المصري</p>
+      <h1>كانت القاهرة <em>تُغنّي</em><br>وكانت الشاشة تُصغي</h1>
+      <p class="lede">فهرس مفتوح لوجوه السينما والموسيقى المصرية بين أول فيلم روائي طويل ورحيل عبد الحليم. كل بطاقة تقود إلى أخرى: مطربة إلى ملحّنها، وفيلم إلى مخرجه، وأغنية إلى سنتها.</p>
+      <a class="btn" href="#/artists">افتح الفهرس</a>
+    </div>
+    <figure class="ph tall" role="img" aria-label="مكان صورة أرشيفية لأم كلثوم">
+      <span>صورة أرشيفية<br>تُستكمل من مصدر موثّق</span>
+      <figcaption>أم كلثوم · بطاقة رقم ٠٠١</figcaption>
+    </figure>
+  </div>
+  <div class="strip" aria-label="مختارات">
+    <a href="#/artist/umm"><small>٠٠١</small><b>أم كلثوم</b><i>Umm Kulthum</i></a>
+    <a href="#/artist/halim"><small>٠٠٢</small><b>عبد الحليم حافظ</b><i>Abdel Halim Hafez</i></a>
+    <a href="#/film/doaa"><small>فيلم</small><b>دعاء الكروان</b><i>١٩٥٩</i></a>
+    <a href="#/song/enta"><small>أغنية</small><b>أنت عمري</b><i>١٩٦٤</i></a>
+  </div>
+  <p class="counts" id="counts"></p>
+</section>
+
+<section class="view" data-view="artists" hidden></section>
+<section class="view" data-view="artist" hidden></section>
+<section class="view" data-view="works" hidden></section>
+<section class="view" data-view="film" hidden></section>
+<section class="view" data-view="song" hidden></section>
+<!-- خط زمني -->
+<section class="view" data-view="timeline" hidden>
+  <header class="head"><p class="kicker">نصف قرن</p><h1>العصور</h1></header>
+  <ol class="tl">
+    <li><time>١٩٢٧</time><p>صدور فيلم «ليلى»، من أوائل الأفلام الروائية الطويلة المصرية.</p></li>
+    <li><time>١٩٣٤</time><p>بدء الإذاعة المصرية الرسمية.</p></li>
+    <li><time>١٩٣٥</time><p>تأسيس استوديو مصر.</p></li>
+    <li><time>١٩٣٦</time><p>صدور فيلم <a href="#/film/wedad">«وداد»</a> بطولة أم كلثوم.</p></li>
+    <li><time>١٩٥٢</time><p>ثورة يوليو وتحوّل المشهد الفني والإعلامي.</p></li>
+    <li><time>١٩٥٩</time><p>صدور <a href="#/film/doaa">«دعاء الكروان»</a>.</p></li>
+    <li><time>١٩٦٤</time><p><a href="#/song/enta">«أنت عمري»</a> لأم كلثوم.</p></li>
+    <li><time>١٩٦٩</time><p>صدور <a href="#/film/mummy">«المومياء»</a> لشادي عبد السلام.</p></li>
+    <li><time>١٩٧٥</time><p>رحيل <a href="#/artist/umm">أم كلثوم</a>.</p></li>
+    <li><time>١٩٧٧</time><p>رحيل عبد الحليم حافظ.</p></li>
+  </ol>
+<section class="decades" aria-labelledby="dh"><h2 id="dh">تصفّح بالعقود</h2><div id="dec"></div></section>
+</section>
+
+<section class="view about" data-view="about" hidden>
+  <header class="head"><p class="kicker">عن المشروع</p><h1>عن الأرشيف</h1></header>
+  <p>سينماتيك أرشيف عام يجمع وجوه الغناء والسينما المصرية ويربط بينها: كل فنان بأعماله، وكل عمل بصنّاعه وسنته.</p>
+  <h2>كيف نكتب المعلومات</h2>
+  <p>نكتب ما نتأكد منه فقط. التواريخ المختلف عليها تُكتب «حوالي»، وما لا يُعرف يُترك فارغًا بدل التخمين.</p>
+  <h2>المصادر والتراخيص</h2>
+  <p>الصور المعروضة أماكن محجوزة إلى حين توثيق مصدر كل صورة وترخيصها، ولا نستخدم صورًا مولّدة على أنها تاريخية. لا تُنشر نصوص الأغاني حفظًا للحقوق. المشروع في مرحلة الإعداد وتُراجع معلوماته قبل النشر.</p>
+</section>
+
+<!-- بحث -->
+<section class="view" data-view="search" hidden>
+  <header class="head"><p class="kicker">بحث في الفهرس</p><h1>ابحث</h1></header>
+  <p><a class="btn" href="#/search" id="rnd">بطاقة عشوائية</a></p>
+  <label class="sr" for="q">اسم أو عنوان</label>
+  <input id="q" type="search" placeholder="اكتب اسمًا أو عنوانًا…" autocomplete="off">
+  <ul id="res" class="res" aria-live="polite"></ul>
+</section>
+
+</main>
+<footer class="foot"><div class="foot-grid">
+  <div><h2>سينماتيك</h2><p>أرشيف ثقافي للغناء والسينما المصرية.</p></div>
+  <div><h2>الأقسام</h2><a href="#/artists">الوجوه</a><a href="#/works">الأعمال</a><a href="#/timeline">العصور</a></div>
+  <div><h2>عن المشروع</h2><a href="#/about">عن الأرشيف</a><a href="#/about">المصادر والتراخيص</a><a href="#/search">بحث</a></div>
+</div><p class="small">مشروع أرشيفي · الصور أماكن محجوزة إلى حين توثيق مصادرها وتراخيصها.</p></footer>
+<button class="top" aria-label="العودة لأعلى">↑</button>
+
+<script>
+const $=s=>document.querySelector(s),ar=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]),no=i=>ar(String(i+1).padStart(3,'0'));
+const nz=s=>s.toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه');
+const K={sing:'الغناء',act:'التمثيل',dir:'الإخراج',comp:'التلحين'};
+const A=[
+['umm','أم كلثوم','Umm Kulthum','حوالي ١٨٩٨ – ١٩٧٥','sing+act','مطربة مصرية عُرفت بحفلاتها الشهرية الطويلة عبر الإذاعة، وتعاونت مع كبار الملحّنين.','s:enta,s:atlal,f:wedad,f:salama'],
+['halim','عبد الحليم حافظ','Abdel Halim Hafez','١٩٢٩ – ١٩٧٧','sing+act','مطرب وممثل مصري، ارتبط اسمه بالأغنية العاطفية وبأفلام الخمسينيات والستينيات.','f:lahn,f:abi'],
+['wahab','محمد عبد الوهاب','Mohamed Abdel Wahab','حوالي ١٩٠٢ – ١٩٩١','sing+comp+act','مطرب وملحّن مصري لحّن لكثير من أصوات عصره وشارك في السينما.','s:enta'],
+['farid','فريد الأطرش','Farid al-Atrash','١٩١٠ – ١٩٧٤','sing+comp+act','مطرب وملحّن وعازف عود، من أبرز وجوه الغناء السينمائي.','f:intisar'],
+['asmahan','أسمهان','Asmahan','١٩١٢ – ١٩٤٤','sing+act','مطربة وممثلة غنّت في السينما المصرية، ورحلت شابة عام ١٩٤٤.','f:intisar'],
+['laila','ليلى مراد','Laila Murad','١٩١٨ – ١٩٩٥','sing+act','مطربة وممثلة مصرية، من نجمات الأفلام الغنائية في الأربعينيات.',''],
+['sabah','صباح','Sabah','١٩٢٧ – ٢٠١٤','sing+act','مطربة وممثلة لبنانية شاركت في أفلام مصرية كثيرة.',''],
+['warda','وردة','Warda','١٩٣٩ – ٢٠١٢','sing','مطربة عربية استقرت في القاهرة وغنّت لكبار الملحّنين.',''],
+['faten','فاتن حمامة','Faten Hamama','١٩٣١ – ٢٠١٥','act','ممثلة مصرية لُقّبت بـ«سيدة الشاشة العربية».','f:doaa,f:sira'],
+['shadia','شادية','Shadia','١٩٣١ – ٢٠١٧','act+sing','ممثلة ومطربة مصرية، شاركت في عشرات الأفلام الغنائية والدرامية.','f:lahn'],
+['omar','عمر الشريف','Omar Sharif','١٩٣٢ – ٢٠١٥','act','ممثل مصري بدأ مشواره في السينما المصرية ثم اشتهر عالميًا.','f:sira'],
+['ismail','إسماعيل ياسين','Ismail Yassin','١٩١٢ – ١٩٧٢','act','ممثل كوميدي مصري قُدّمت باسمه سلسلة أفلام شهيرة.',''],
+['soad','سعاد حسني','Soad Hosny','١٩٤٣ – ٢٠٠١','act','ممثلة مصرية لُقّبت بـ«سندريلا الشاشة».','f:karnak'],
+['hind','هند رستم','Hind Rostom','١٩٣١ – ٢٠١١','act','ممثلة مصرية، من أبرز نجمات الخمسينيات.','f:bab'],
+['nadia','نادية لطفي','Nadia Lutfi','١٩٣٧ – ٢٠٢٠','act','ممثلة مصرية من نجمات الستينيات.','f:abi,f:mummy'],
+['tahia','تحية كاريوكا','Tahia Carioca','١٩١٥ – ١٩٩٩','act','ممثلة وراقصة مصرية.',''],
+['samia','سامية جمال','Samia Gamal','١٩٢٤ – ١٩٩٤','act','راقصة وممثلة مصرية من نجمات الأربعينيات والخمسينيات.',''],
+['rihani','نجيب الريحاني','Naguib al-Rihani','١٨٨٩ – ١٩٤٩','act','ممثل كوميدي ومسرحي مصري، من رواد الكوميديا المصرية.',''],
+['wahbi','يوسف وهبي','Youssef Wahbi','١٨٩٨ – ١٩٨٢','act','ممثل ومخرج مسرحي وسينمائي مصري لُقّب بـ«عميد المسرح العربي».',''],
+['meligy','محمود المليجي','Mahmoud al-Meligy','١٩١٠ – ١٩٨٣','act','ممثل مصري من أبرز وجوه الشاشة في منتصف القرن.',''],
+['rushdy','رشدي أباظة','Rushdy Abaza','١٩٢٦ – ١٩٨٠','act','ممثل مصري من نجوم الخمسينيات والستينيات.',''],
+['zulfikar','صلاح ذو الفقار','Salah Zulfikar','١٩٢٦ – ١٩٩٣','act','ممثل ومنتج مصري.',''],
+['chahine','يوسف شاهين','Youssef Chahine','١٩٢٦ – ٢٠٠٨','dir','مخرج مصري عُرضت أفلامه في مهرجانات دولية.','f:bab,f:sira'],
+['abuseif','صلاح أبو سيف','Salah Abu Seif','١٩١٥ – ١٩٩٦','dir','مخرج مصري من رواد الواقعية في السينما المصرية.',''],
+['barakat','هنري بركات','Henry Barakat','١٩١٤ – ١٩٩٧','dir','مخرج مصري أخرج عددًا من كلاسيكيات السينما المصرية.','f:doaa'],
+['shadi','شادي عبد السلام','Shadi Abdel Salam','١٩٣٠ – ١٩٨٦','dir','مخرج ومصمم مصري اشتهر بفيلم «المومياء».','f:mummy'],
+['sunbati','رياض السنباطي','Riyad al-Sunbati','١٩٠٦ – ١٩٨١','comp','ملحّن مصري لحّن لأم كلثوم أعمالًا كثيرة.','s:atlal'],
+['baligh','بليغ حمدي','Baligh Hamdi','١٩٣٢ – ١٩٩٣','comp','ملحّن مصري تعاون مع كبار مطربي عصره.',''],
+['mougy','محمد الموجي','Mohamed al-Mougy','١٩٢٣ – ١٩٦٦','comp','ملحّن مصري لحّن لعبد الحليم حافظ.','']
+].map(a=>({id:a[0],ar:a[1],en:a[2],y:a[3],k:a[4],r:a[4].split('+'),t:a[5],w:a[6]?a[6].split(','):[]}));
+const F=[
+['wedad','وداد','Weddad',1936,'فريتز كرامب','أم كلثوم'],
+['intisar','انتصار الشباب','Intisar al-Shabab',1941,'أحمد بدرخان','فريد الأطرش،أسمهان'],
+['salama','سلامة','Salama',1945,'توجو مزراحي','أم كلثوم'],
+['sira','صراع في الوادي','Struggle in the Valley',1954,'يوسف شاهين','فاتن حمامة،عمر الشريف'],
+['lahn','لحن الوفاء','Lahn al-Wafa',1955,'أحمد بدرخان','عبد الحليم حافظ،شادية'],
+['bab','باب الحديد','Cairo Station',1958,'يوسف شاهين','هند رستم'],
+['doaa','دعاء الكروان','The Nightingale\'s Prayer',1959,'هنري بركات','فاتن حمامة'],
+['abi','أبي فوق الشجرة','My Father Is Up the Tree',1969,'حسين كمال','عبد الحليم حافظ،نادية لطفي'],
+['mummy','المومياء','The Night of Counting the Years',1969,'شادي عبد السلام','نادية لطفي'],
+['karnak','الكرنك','Karnak',1975,'علي بدرخان','سعاد حسني']
+].map(a=>({id:a[0],ar:a[1],en:a[2],y:a[3],d:a[4],c:a[5]}));
+const S=[
+['enta','أنت عمري','Enta Omri',1964,'أحمد شفيق كامل','محمد عبد الوهاب','أم كلثوم'],
+['atlal','الأطلال','Al-Atlal',1966,'إبراهيم ناجي','رياض السنباطي','أم كلثوم']
+].map(a=>({id:a[0],ar:a[1],en:a[2],y:a[3],l:a[4],c:a[5],s:a[6]}));
+const M=a=>Object.fromEntries(a.map(x=>[x.id,x])),AM=M(A),FM=M(F),SM=M(S);
+const L=n=>{const a=A.find(x=>x.ar==n);return a?`<a href="#/artist/${a.id}">${n}</a>`:n};
+const grp=a=>[...new Set(a.r.map(x=>x=='dir'||x=='comp'?'back':x))].join(' ');
+const row=(i,h,a,en,y,k,x)=>`<li data-k="${k||''}"${x||''}><a href="${h}"><span class="no">${no(i)}</span><b>${a}</b><i>${en}</i><span class="yr">${y}</span></a></li>`;
+const rowA=(a,i)=>{const x=' data-i="'+i+'" data-b="'+bd(a.y)+'" data-n="'+a.ar+'"';return a.w.length?row(i,'#/artist/'+a.id,a.ar,a.en,a.y,grp(a),x):row(i,'#',a.ar,a.en,a.y+' · قريبًا',grp(a),x).replace('<li ','<li class="soon" ').replace('<a href="#">','<span class="rowin">').replace('</a>','</span>')};
+const head=(k,t,x)=>`<header class="head"><p class="kicker">${k}</p><h1>${t}</h1>${x||''}</header>`;
+/* صور موثّقة: IMG['artist:id']={u:'رابط الصورة',c:'المصدر · الترخيص'} — تُملأ بعد التحقق من الترخيص */
+const IMG={};
+const pic=(k,lbl,cls)=>IMG[k]?`<figure class="ph ${cls} photo"><img src="${IMG[k].u}" alt="${lbl}" loading="lazy" onerror="this.parentNode.classList.remove('photo');this.remove()"><figcaption>${IMG[k].c}</figcaption></figure>`:`<figure class="ph ${cls}" role="img" aria-label="${lbl}"><span>${cls=='portrait'?'صورة أرشيفية':'صورة'}<br>تُستكمل من مصدر موثّق</span></figure>`;
+const bd=y=>(y.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).match(/\d+/)||[0])[0];
+const crumb=(h,t,c)=>`<p class="crumb"><a href="#/">الرئيسية</a><span>‹</span><a href="${h}">${t}</a><span>‹</span>${c}</p>`;
+const AR=A.filter(x=>x.w.length);
+const pn=(r,i,p)=>i<0?'':`<p class="pn">${i>0?`<a href="#/${p}/${r[i-1].id}">→ ${r[i-1].ar}</a>`:'<span></span>'}${i<r.length-1?`<a href="#/${p}/${r[i+1].id}">${r[i+1].ar} ←</a>`:'<span></span>'}</p>`;
+const role=(a,f,o)=>f?(o.d==a.ar?'إخراج':o.c.includes(a.ar)?'بطولة':'—'):(o.s==a.ar?'غناء':o.c==a.ar?'تلحين':o.l==a.ar?'كلمات':'—');
+function artist(id){const a=AM[id]||A[0],i=A.indexOf(a);
+const ws=a.w.map(x=>{const f=x[0]=='f',o=(f?FM:SM)[x.slice(2)];return {y:o.y,h:`#/${f?'film':'song'}/${o.id}`,t:o.ar,k:f?'فيلم':'أغنية',r:role(a,f,o)}}).sort((p,q)=>p.y-q.y);
+const co=A.filter(b=>b!==a&&b.w.some(x=>a.w.includes(x)));
+const tb=(t,l)=>{const r=ws.filter(w=>w.k==t);return r.length?`<div class="sec"><h2>${l}</h2><div class="tw"><table class="works"><thead><tr><th>السنة</th><th>العمل</th><th>الصفة</th></tr></thead><tbody>${r.map(w=>`<tr><td>${ar(w.y)}</td><td><a href="${w.h}">${w.t}</a></td><td>${w.r}</td></tr>`).join('')}</tbody></table></div></div>`:''};
+return crumb('#/artists','الوجوه',a.ar)+`<article class="profile">${pic('artist:'+a.id,'صورة '+a.ar,'portrait')}<div class="profile-text"><p class="kicker">بطاقة ${no(i)} · ${a.r.map(x=>K[x]).join(' · ')}</p><h1>${a.ar}</h1><p class="latin">${a.en}</p><p class="pull">${a.t}</p><dl class="facts"><div><dt>السنوات</dt><dd>${a.y}</dd></div><div><dt>المجال</dt><dd>${a.r.map(x=>K[x]).join(' · ')}</dd></div></dl>`+
+tb('فيلم','أفلامه')+tb('أغنية','أغانيه')+
+(co.length?`<div class="sec"><h2>شاركه في أعمال</h2><p>${co.map(b=>`<a href="#/artist/${b.id}">${b.ar}</a>`).join(' · ')}</p></div>`:'')+
+`</div></article>`+pn(AR,AR.indexOf(a),'artist')}
+function film(id){const f=FM[id]||F[0],i=F.indexOf(f);
+return crumb('#/works','الأعمال',f.ar)+`<article class="profile">${pic('film:'+f.id,'ملصق '+f.ar,'portrait')}<div class="profile-text"><p class="kicker">بطاقة ${no(i)} · فيلم</p><h1>${f.ar}</h1><p class="latin">${f.en}</p><p class="pull">فيلم مصري من إخراج ${f.d}.</p><dl class="facts"><div><dt>إخراج</dt><dd>${L(f.d)}</dd></div><div><dt>بطولة</dt><dd>${f.c.split('،').map(L).join(' · ')}</dd></div><div><dt>السنة</dt><dd>${ar(f.y)}</dd></div></dl></div></article>`+pn(F,i,'film')}
+function song(id){const s=SM[id]||S[0],i=S.indexOf(s);
+return crumb('#/works','الأعمال',s.ar)+`<article class="song"><div class="vinyl" aria-hidden="true"></div><div><p class="kicker">أغنية · ${ar(s.y)}</p><h1>${s.ar}</h1><p class="latin">${s.en}</p><dl class="facts"><div><dt>غناء</dt><dd>${L(s.s)}</dd></div><div><dt>تلحين</dt><dd>${L(s.c)}</dd></div><div><dt>كلمات</dt><dd>${s.l}</dd></div></dl><p>لا يُنشر نص الأغنية هنا لحفظ الحقوق.</p></div></article>`+pn(S,i,'song')}
+$('[data-view=artists]').innerHTML=head('الفهرس العام','الوجوه',`<div class="filters" role="group" aria-label="تصفية">${[['all','الكل'],['sing','الغناء'],['act','التمثيل'],['back','الإخراج والتلحين']].map((f,i)=>`<button${i?'':' class="on"'} data-f="${f[0]}">${f[1]}</button>`).join('')}</div><select class="sort" id="srt" aria-label="الترتيب"><option value="i">الترتيب: حسب الفهرس</option><option value="n">أبجديًا</option><option value="b">الأقدم ميلادًا</option></select>`)+`<ol class="index">${A.map((a,i)=>rowA(a,i)).join('')}</ol>`;
+const W=[...F.map(f=>({t:'film',o:f})),...S.map(s=>({t:'song',o:s}))].sort((a,b)=>a.o.y-b.o.y);
+$('[data-view=works]').innerHTML=head('السينما والموسيقى','الأعمال',`<div class="filters" role="group" aria-label="تصفية">${[['all','الكل'],['film','الأفلام'],['song','الأغاني']].map((f,i)=>`<button${i?'':' class="on"'} data-f="${f[0]}">${f[1]}</button>`).join('')}</div>`)+`<ol class="index">${W.map((w,i)=>row(i,`#/${w.t}/${w.o.id}`,w.o.ar,w.o.en,(w.t=='film'?'فيلم · ':'أغنية · ')+ar(w.o.y),w.t)).join('')}</ol>`;
+$('#counts').textContent=`في الفهرس الآن: ${ar(A.length)} اسمًا · ${ar(F.length)} أفلام · ${ar(S.length)} أغنية`;
+$('#dec').innerHTML=[[1930,'الثلاثينيات'],[1940,'الأربعينيات'],[1950,'الخمسينيات'],[1960,'الستينيات'],[1970,'السبعينيات']].map(d=>{const it=[...F.map(f=>[f.y,'#/film/'+f.id,f.ar]),...S.map(s=>[s.y,'#/song/'+s.id,s.ar])].filter(x=>x[0]>=d[0]&&x[0]<d[0]+10).sort((a,b)=>a[0]-b[0]);
+return `<div class="dec"><h3>${d[1]}</h3><ul>${it.map(x=>`<li><small>${ar(x[0])}</small><a href="${x[1]}">${x[2]}</a></li>`).join('')}</ul></div>`}).join('');
+$('#rnd').onclick=e=>{e.preventDefault();const all=[...AR.map(a=>'#/artist/'+a.id),...F.map(f=>'#/film/'+f.id),...S.map(s=>'#/song/'+s.id)];location.hash=all[Math.random()*all.length|0]};
+const views=[...document.querySelectorAll('.view')];
+function route(){const p=location.hash.replace('#/','').split('/');let n=p[0]||'home',wf=null;if(n=='films'||n=='songs'){wf=n=='films'?'film':'song';n='works'}
+ if(!$('[data-view='+n+']'))n='home';
+ if(n=='artist')$('[data-view=artist]').innerHTML=artist(p[1]);
+ if(n=='film')$('[data-view=film]').innerHTML=film(p[1]);
+ if(n=='song')$('[data-view=song]').innerHTML=song(p[1]);
+ if(n=='works')setF($('[data-view=works]'),wf||p[1]||'all');
+ if(n=='artists')setF($('[data-view=artists]'),p[1]||'all');
+ views.forEach(v=>v.hidden=v.dataset.view!==n);$('#nav').classList.remove('open');$('.menu').setAttribute('aria-expanded','false');
+ document.body.dataset.v=n;const m={artist:'artists',film:'works',song:'works'}[n]||n;
+ document.querySelectorAll('nav a').forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')==='#/'+m));
+window.scrollTo(0,0);
+ const T={home:'سينماتيك — أرشيف الغناء والسينما المصرية',artists:'الوجوه',works:'الأعمال',timeline:'العصور',search:'بحث',about:'عن الأرشيف'},o={artist:AM,film:FM,song:SM}[n];
+ document.title=n=='home'?T.home:(o?(o[p[1]]||{ar:'سينماتيك'}).ar:T[n])+' — سينماتيك';
+ const t=$('[data-view='+n+'] h1');if(t){t.tabIndex=-1;t.focus({preventScroll:true})}}
+addEventListener('hashchange',route);route();
+function setF(v,f){v.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x.dataset.f===f));v.querySelectorAll('.index li').forEach(li=>li.hidden=f!=='all'&&!li.dataset.k.split(' ').includes(f))}
+document.addEventListener('click',e=>{const b=e.target.closest('.filters button');if(b)setF(b.closest('.view'),b.dataset.f)});
+$('#srt').onchange=e=>{const o=$('[data-view=artists] .index'),v=e.target.value;[...o.children].sort((a,b)=>v=='n'?a.dataset.n.localeCompare(b.dataset.n,'ar'):v=='b'?a.dataset.b-b.dataset.b:a.dataset.i-b.dataset.i).forEach(x=>o.append(x))};
+$('.skip').onclick=e=>{e.preventDefault();$('#main').focus()};
+$('.menu').onclick=()=>{const o=$('#nav').classList.toggle('open');$('.menu').setAttribute('aria-expanded',o)};
+const tp=$('.top');tp.onclick=()=>scrollTo({top:0,behavior:'smooth'});addEventListener('scroll',()=>tp.classList.toggle('show',scrollY>600));
+const all=[...AR.map(a=>[a.ar,a.en,'#/artist/'+a.id]),...F.map(f=>[f.ar,f.en,'#/film/'+f.id]),...S.map(s=>[s.ar,s.en,'#/song/'+s.id])];
+$('#q').oninput=e=>{const s=nz(e.target.value.trim());
+ $('#res').innerHTML=s?all.filter(i=>nz(i[0]+' '+i[1]).includes(s)).map(i=>`<li><a href="${i[2]}"><b>${i[0]}</b><i>${i[1]}</i></a></li>`).join('')||'<li>لا نتائج</li>':''};
+</script>
+</body>
+</html>
