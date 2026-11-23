@@ -45,6 +45,15 @@
 - الترخيص: الملكية العامة في مصر
 - السنة: أربعينيات القرن العشرين
 
+## وردة الجزائرية
+
+- الملف المحلي: `public/images/artist-warda.jpg`
+- ملف المصدر: https://commons.wikimedia.org/wiki/File:Warda_Al_Jazairia.jpg
+- الصورة الأصلية: https://upload.wikimedia.org/wikipedia/commons/0/00/Warda_Al_Jazairia.jpg
+- المؤلف: Saber68
+- الترخيص: الملكية العامة في الجزائر؛ يذكر كومنز أن الصورة نُشرت عام ١٩٧٧ وسقطت حمايتها وفق مدة الحماية الجزائرية المدرجة للمصادر المنشورة قبل ١٩٨٧.
+- السنة: ١٩٧٧
+
 ## المومياء
 
 - الملف المحلي: `public/images/film-mummy.jpg`

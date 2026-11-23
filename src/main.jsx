@@ -26,6 +26,9 @@ const IMG = {
   'artist:asmahan': { u: '/images/artist-asmahan.jpg', c: 'ويكيميديا كومنز · الملكية العامة المصرية', alt: 'أسمهان في صورة شخصية بالأبيض والأسود' },
   'artist:laila': { u: '/images/artist-laila.jpg', c: 'ويكيميديا كومنز · الملكية العامة المصرية', alt: 'ليلى مراد في صورة شخصية بالأبيض والأسود في الأربعينيات' },
   'artist:sabah': { u: '/images/artist-sabah.jpg', c: 'ويكيميديا كومنز · الملكية العامة المصرية', alt: 'صباح في صورة من عام 1961' },
+  'artist:warda': { u: '/images/artist-warda.jpg', c: 'ويكيميديا كومنز · الملكية العامة في الجزائر', alt: 'وردة الجزائرية في صورة عام 1977' },
+  'film:almaz-abdo': { u: '/images/artist-warda.jpg', c: 'ويكيميديا كومنز · الملكية العامة في الجزائر', alt: 'صورة وردة الجزائرية، بطلة فيلم ألمظ وعبده الحامولي' },
+  'film:amira-al-arab': { u: '/images/artist-warda.jpg', c: 'ويكيميديا كومنز · الملكية العامة في الجزائر', alt: 'صورة وردة الجزائرية، بطلة فيلم أميرة العرب' },
   'artist:faten': { u: '/images/film-faten.jpg', c: 'ويكيميديا كومنز · الملكية العامة المصرية', alt: 'فاتن حمامة في صورة فوتوغرافية' },
   'artist:shadia': { u: '/images/film-shadia.jpg', c: 'ويكيميديا كومنز · الملكية العامة المصرية', alt: 'شادية في صورة فوتوغرافية من عام 1957' },
   'artist:omar': { u: '/images/artist-omar.jpg', c: 'ويكيميديا كومنز · CC0', alt: 'عمر الشريف في بطولة بريدج بأمستردام عام 1967' },
@@ -407,9 +410,9 @@ function Artist({ id }) {
       </dl>
       {a.bio && <div className="sec"><h2>السيرة</h2>{a.bio.map((p,n) => <p key={n}>{p}</p>)}</div>}
       {a.family && <div className="sec"><h2>الأسرة</h2><p>{a.family}</p></div>}
-      {a.r.includes('act') && <div className="sec"><h2>المسيرة السينمائية</h2>{filmWorks.length ? <div className="tw"><table className="works"><thead><tr><th>السنة</th><th>الفيلم</th><th>الصفة</th></tr></thead><tbody>{filmWorks.map(w => <tr key={w.href}><td>{yearLabel(w.y)}</td><td><a href={w.href}>{w.title}</a></td><td>{w.role}</td></tr>)}</tbody></table></div> : <p className="note">لا توجد أفلام مفهرسة لهذا الممثل بعد.</p>}{a.filmographyUrl && <p><a href={a.filmographyUrl} target="_blank" rel="noreferrer">الفيلموجرافيا الكاملة للأفلام على السينما.كوم ↗</a></p>}</div>}
+      {a.r.includes('act') && <div className="sec"><h2>المسيرة السينمائية</h2>{filmWorks.length ? <div className="tw"><table className="works"><thead><tr><th>السنة</th><th>الفيلم</th><th>الصفة</th></tr></thead><tbody>{filmWorks.map(w => <tr key={w.href}><td>{yearLabel(w.y)}</td><td><a href={w.href}>{w.title}</a></td><td>{w.role}</td></tr>)}</tbody></table></div> : <p className="note">لا توجد أفلام مفهرسة محليًا في هذا السجل حتى الآن.</p>}{a.filmographyUrl && <p><a href={a.filmographyUrl} target="_blank" rel="noreferrer">الفيلموجرافيا الكاملة للأفلام على السينما.كوم ↗</a></p>}</div>}
       {nonFilmWorks.length > 0 && <div className="sec"><h2>{a.r.includes('act') ? 'أعمال أخرى' : 'أعماله'}</h2><div className="tw"><table className="works"><thead><tr><th>السنة</th><th>العمل</th><th>النوع</th><th>الصفة</th></tr></thead><tbody>{nonFilmWorks.map(w => <tr key={w.href}><td>{yearLabel(w.y)}</td><td><a href={w.href}>{w.title}</a></td><td>{w.kind}</td><td>{w.role}</td></tr>)}</tbody></table></div></div>}
-      {co.length > 0 && <div className="sec"><h2>شاركه في أعمال</h2><p>{co.map((b, n) => <React.Fragment key={b.id}>{n ? ' · ' : ''}<a href={`#/artist/${b.id}`}>{b.ar}</a></React.Fragment>)}</p></div>}
+      {co.length > 0 && <div className="sec"><h2>شركاء في أعمال</h2><p>{co.map((b, n) => <React.Fragment key={b.id}>{n ? ' · ' : ''}<a href={`#/artist/${b.id}`}>{b.ar}</a></React.Fragment>)}</p></div>}
       {linkedSongs.length > 0 && <ArtistPreviews artist={a} songs={linkedSongs} />}
     </div></article><ShareAndTail related={related} items={AR} i={AR.indexOf(a)} type="artist" /></section>;
 }
